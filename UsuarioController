@@ -1,0 +1,30 @@
+using ProyectoMVCPrueba.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace ProyectoMVCPrueba.Controllers
+{
+    public class UsuarioController : Controller
+    {
+        // GET: Usuario
+        public ActionResult Index()
+        {
+            Usuario usuario = new Usuario();
+            return View(usuario);
+        }
+
+        [HttpPost]
+        public ActionResult Index(Usuario usuario)
+        {
+            if (ModelState.IsValid)
+            {
+                //Introducimos al usuario a nuestra base de datos
+                return RedirectToAction("MensajeValido");
+            }
+            return View();
+        }
+    }
+}
