@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace ProyectoMVCPrueba.Models
+{
+    public class Usuario
+    {
+        [Required(ErrorMessage ="Este campo es obligatorio")]
+        [RegularExpression("[A-Za-z]*",ErrorMessage ="Este campo solo permite letras")]
+        public string NombreUsuario { get; set; }
+
+        [Required(ErrorMessage ="El campo contraseña es obligatorio")]
+        [RegularExpression("[0-9]*",ErrorMessage = "Solo se permite numeros")]
+        public string Contraseña { get; set; }
+
+        [Range(18,90, ErrorMessage ="Solo se puede registrar gente mayor de 18 años")]
+        public string Edad { get; set; }
+
+        [DataType(DataType.EmailAddress,ErrorMessage ="El Email introducido no es válido")]
+        public string Email { get; set; }
+    }
+}
